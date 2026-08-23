@@ -32,17 +32,15 @@ fastify.get("/", async function (request, reply) {
     `https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=${username}&api_key=${token}&format=json`,
   );
   const data = extractNP(await resp.json());
-
-
-
+  
   reply.send(data);
 });
 
 // Run the server!
-fastify.listen({ port: 3000 }, function (err, address) {
+fastify.listen({ port }, function (err, address) {
   if (err) {
     fastify.log.error(err);
     process.exit(1);
   }
-  // Server is now listening on ${address}
+  fastify.log.info(`Server is now listening on ${address}`);
 });
