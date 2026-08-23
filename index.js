@@ -1,11 +1,16 @@
 import Config from "./config.json" with { type: "json" };
 import Fastify from "fastify";
+import cors from '@fastify/cors'
 
 const { token, username, port} = Config;
 
 const fastify = Fastify({
   logger: true,
 });
+
+await fastify.register(cors, {
+  // put your options here
+})
 
 async function guess_playtime(json) {
   // get last song length and endtime (which is current song start time probably)
