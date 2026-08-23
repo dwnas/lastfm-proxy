@@ -1,9 +1,7 @@
 import Config from "./config.json" with { type: "json" };
 import Fastify from "fastify";
 
-const { token, username } = Config;
-
-console.log(token, username);
+const { token, username, port} = Config;
 
 const fastify = Fastify({
   logger: true,
